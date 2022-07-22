@@ -13,28 +13,28 @@ uploaded_file = st.file_uploader("Choose a file")
 
 if uploaded_file is not None:
      # Can be used wherever a "file-like" object is accepted:
-     dataframe = pd.read_excel(uploaded_file)
+    dataframe = pd.read_excel(uploaded_file)
      
      
-     option = st.selectbox(
+    option = st.selectbox(
      'Which column do you want to be checked with ?',
         list(dataframe.columns.values))
      
-     count = dataframe[option].value_counts()
-     
-     st.table(count);
-     csv = convert_df(count)
-     st.download_button(
+    count = dataframe[option].value_counts()
+    csv = convert_df(count)
+    st.download_button(
         "Press to Download Count Data",
         csv,
         option+"_duplicates.csv",
         "text/csv",
         key='download-csv'
     )
+    st.table(count);
+   
      
      
-     agree = st.checkbox('Show Original Data')
-     if agree:
+    agree = st.checkbox('Show Original Data')
+    if agree:
         st.write(dataframe)
         
        
