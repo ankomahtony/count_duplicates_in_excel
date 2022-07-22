@@ -22,7 +22,7 @@ if uploaded_file is not None:
      
      count = dataframe[option].value_counts()
      
-     st.write(count);
+     st.table(count);
      csv = convert_df(count)
      st.download_button(
         "Press to Download Count Data",
